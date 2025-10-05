@@ -1,0 +1,31 @@
+import java.util.*;
+class Solution {
+    public static void main (String[] args){
+        Scanner sc = new Scanner (System.in);
+        int k = (int)(Math.random()*100);
+        int n;
+
+        do{
+            System.out.println("Guess number :");
+             n = sc.nextInt();
+
+
+                if (n == k) {
+                    System.out.println("yes you are guess is correct !!");
+                    break;
+                } else if (n > k) {
+                    System.out.println("number is bigger");
+
+                } else {
+                    System.out.println("number is small");
+
+                }
+            }while(n >= 0);
+        System.out.println(k);
+
+
+        }
+
+
+    }
+
