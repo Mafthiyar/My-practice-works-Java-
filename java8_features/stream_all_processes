@@ -1,0 +1,23 @@
+
+
+import java.util.*;
+import java.util.stream.Stream;
+
+class store{
+    public static void main (String[] args){
+        List<Integer> list = Arrays.asList(2,8,6,4,7,1);
+
+        list.stream()
+                .filter(n -> n%2 == 1)
+                .sorted()
+                .map(n -> (n*2))
+                .forEach(n -> System.out.println(n));
+
+
+
+
+//        for(int n : list){
+//            System.out.println(n*2);
+//        }
+    }
+}
