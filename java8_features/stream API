@@ -1,0 +1,14 @@
+
+
+import java.util.*;
+import java.util.stream.Stream;
+
+class store{
+    public static void main (String[] args){
+        List<Integer> list = Arrays.asList(2,4,6,8);
+
+        Stream<Integer> str = list.stream();
+
+        str.forEach(n -> System.out.print(n));
+    }
+}
