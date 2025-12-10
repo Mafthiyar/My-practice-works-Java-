@@ -1,0 +1,20 @@
+
+
+import java.util.*;
+import java.util.stream.Stream;
+
+class store{
+    public static void main (String[] args){
+        List<Integer> list = Arrays.asList(2,8,6,4);
+
+        Stream<Integer> data = list.stream();
+
+        Stream<Integer> mapped = data.map(n -> (n*2));
+
+        mapped.forEach(n -> System.out.println(n));
+
+//        for(int n : list){
+//            System.out.println(n*2);
+//        }
+    }
+}
