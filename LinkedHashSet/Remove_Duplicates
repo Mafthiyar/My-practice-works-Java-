@@ -1,0 +1,14 @@
+import java.util.*;
+class solution{
+    public static void main (String[] args){
+        int arr[] = {1, 1, 1, 2, 2, 2, 2, 3, 3, 4, 5};
+
+        Set<Integer> set = new LinkedHashSet<>();
+
+        for (int nums : arr){
+            set.add(nums);
+        }
+
+        System.out.println(set);
+    }
+}
