@@ -1,0 +1,78 @@
+import java.util.*;
+abstract class shape{
+   abstract void findarea();
+    abstract void findpara();
+}
+
+class rectangle extends shape{
+    private double l;
+    private double b;
+
+    rectangle(double l, double b){
+        this.l = l;
+        this.b = b;
+    }
+
+    void findarea(){
+        double area = l*b;
+        System.out.println(area);
+    }
+
+    void findpara(){
+        double peri = 2*l+b;
+        System.out.println(peri);
+    }
+
+}
+
+class square extends shape{
+    private double s;
+    square(double s){
+        this.s = s;
+    }
+
+    void findarea(){
+        double area = s*s;
+        System.out.println(area);
+    }
+    void findpara(){
+        double peri = 4 * s;
+        System.out.println(peri);
+    }
+
+}
+
+class circle extends shape{
+    private static double PI = 3.14;
+    private double r;
+
+    circle(double r){
+        this.r = r;
+    }
+
+    void findarea(){
+        double area = PI * r * r;
+        System.out.println(area);
+    }
+    void findpara(){
+        double peri = 2 * PI * r;
+        System.out.println(peri);
+    }
+}
+
+
+
+
+class painter{
+    void draw(shape s){
+        s.findarea();
+        s.findpara();
+    }
+}
+class solution{
+    public static void main (String[] args){
+        painter p = new painter();
+        rectangle r = new rectangle(10,2);
+        r.findarea();
+    }
+}
