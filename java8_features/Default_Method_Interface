@@ -1,0 +1,23 @@
+import java.util.*;
+interface sports{
+    void play();
+
+    default void fitness(){
+        System.out.println("hey lets hit gym");
+    }
+}
+
+class cricket implements sports{
+    public void play(){
+        System.out.println("its a sixer");
+    }
+}
+
+
+class solution {
+    public static void main (String[] args){
+        cricket c = new cricket();
+        c.play();
+        c.fitness();
+    }
+}
