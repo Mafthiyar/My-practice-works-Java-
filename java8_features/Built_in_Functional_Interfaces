@@ -1,0 +1,103 @@
+
+🔹 1. Predicate (Condition check)
+
+✔ Takes input
+✔ Returns boolean
+
+import java.util.*;
+import java.util.function.Predicate;
+
+class solution {
+    public static void main (String[] args){
+        Predicate<Integer> p = n -> n > 10;
+
+        System.out.print(p.test(5));
+    }
+}
+
+Output: false
+Use case:
+👉 filtering, conditions
+
+........................................................................
+
+🔹 2. Consumer (Only input)
+
+✔ Takes input
+✔ Returns nothing
+
+import java.util.*;
+import java.util.function.Consumer;
+
+class solution {
+    public static void main (String[] args){
+        Consumer<String> c = n-> System.out.println(n);
+
+        c.accept("Mafthiyar");
+
+
+    }
+}
+
+Output:
+Mafthiyar
+
+
+Use case:
+👉 printing, logging
+
+................................................................................
+
+🔹 3. Function (Input → Output)
+
+✔ Takes input
+✔ Returns output
+
+import java.util.*;
+import java.util.function.Function;
+
+class solution {
+    public static void main (String[] args){
+        Function<Integer,Integer> f = n-> n * n;
+
+        System.out.println(f.apply(5));
+
+
+    }
+}
+
+Output:
+
+25
+
+
+Use case:
+👉 transformation
+
+..........................................................................
+
+🔹 4. Supplier (Only output)
+
+✔ No input
+✔ Returns output
+
+import java.util.*;
+import java.util.function.Supplier;
+
+class solution {
+    public static void main (String[] args){
+       Supplier<String> s = () -> "hello";
+
+        System.out.println(s.get());
+
+    }
+}
+
+Output:
+
+Java 8
+
+
+Use case:
+👉 value generation
+
