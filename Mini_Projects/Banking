@@ -1,0 +1,127 @@
+class NegativeAmountException extends Exception{
+    private static final long serialVersionUID = 1L;
+
+    public NegativeAmountException(){
+
+    }
+
+    public NegativeAmountException(String msg){
+        super(msg);
+    }
+}
+
+class InsufficientFundsException extends Exception{
+    private static final long serialVersionUID = 1L;
+
+    public InsufficientFundsException() {
+    }
+
+    public InsufficientFundsException(String msg){
+        super(msg);
+    }
+}
+
+interface bank{
+    void deposit(double amt) throws NegativeAmountException;
+    void withdraw(double amt) throws InsufficientFundsException, NegativeAmountException;
+    void currBalance();
+}
+
+
+class SBI implements bank{
+    private String accName;
+    private long accNum;
+    private double balance;
+
+    public SBI(String accName,long accNum, double balance){
+        this.accName = accName;
+        this.accNum = accNum;
+        this.balance = balance;
+    }
+
+    public void deposit(double amt) throws NegativeAmountException{
+        if (amt <= 0) throw new NegativeAmountException("no negatives");
+        this.balance = balance + amt;
+        System.out.println(accNum + "   :    " + amt);
+    }
+
+    public void withdraw(double amt) throws InsufficientFundsException,NegativeAmountException{
+        if(amt <= 0) throw new NegativeAmountException("nergative");
+        if(amt > balance) throw new InsufficientFundsException("out of");
+
+        this.balance = balance - amt;
+        System.out.println(accNum + "  :  " + amt);
+    }
+
+    @Override
+    public void currBalance() {
+        System.out.println(accNum + "  :  " + balance);
+    }
+
+}
+
+class withdrawer extends Thread{
+    private bank acc;
+    private double amt;
+
+    public withdrawer(bank acc,double amt){
+        this.acc = acc;
+        this.amt = amt;
+    }
+
+    public void run(){
+        try{
+            acc.withdraw(amt);
+        }catch(NegativeAmountException | InsufficientFundsException e){
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+class depositer extends Thread {
+    private bank acc;
+    private double amt;
+
+    public depositer(bank acc, double amt) {
+        this.acc = acc;
+        this.amt = amt;
+    }
+
+        public void run(){
+            try {
+                acc.deposit(amt);
+            } catch (NegativeAmountException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+}
+
+
+class Banking{
+    public static void main (String[] args) throws InterruptedException{
+        SBI a1 = new SBI("mafthiyar",123,4000);
+        SBI a2 = new SBI("sumanth",231,5000);
+        SBI a3 = new SBI("krishh",432,6000);
+
+        a1.currBalance();
+        a2.currBalance();
+        a3.currBalance();
+        System.out.println();
+
+        withdrawer w1 = new withdrawer(a1,400);
+        withdrawer w2 = new withdrawer(a2,900);
+        depositer d1 = new depositer(a3,200);
+
+        w1.start();
+        w2.start();
+        d1.start();
+
+        Thread.sleep(3000);
+        System.out.println();
+
+        a1.currBalance();
+        a2.currBalance();
+        a3.currBalance();
+    }
+}
